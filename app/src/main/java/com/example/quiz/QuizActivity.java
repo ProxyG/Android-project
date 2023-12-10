@@ -4,15 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -43,100 +48,10 @@ public class QuizActivity extends AppCompatActivity {
             put("answers", answers);
         }});
     }} ;
-    List<Map<String, Object>> lstWeb = new ArrayList<Map<String, Object>>() {{
-        add(new HashMap<String,Object>(){{
-            put("question" , "Quel langage de balisage est principalement utilisé pour structurer le contenu d'une page web ?");
-            List<Map<String, Object>> answers = new ArrayList<>();
-            answers.add(new HashMap<String,Object>(){{put("answer" , "JavaScript"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "CSS"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "HTML"); put("score" , 1);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "PHP"); put("score" , 0);}});
-            put("answers", answers);
-        }});
-        add(new HashMap<String,Object>(){{
-            put("question" , "Quel langage de programmation est couramment utilisé pour le développement côté serveur dans les applications web dynamiques ?");
-            List<Map<String, Object>> answers = new ArrayList<>();
-            answers.add(new HashMap<String,Object>(){{put("answer" , "SQL"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Java"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Python"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "PHP"); put("score" , 1);}});
-            put("answers", answers);
-        }});
-        add(new HashMap<String,Object>(){{
-            put("question" , "Quelle technologie est utilisée pour créer des styles et des mises en page élégantes sur un site web ?");
-            List<Map<String, Object>> answers = new ArrayList<>();
-            answers.add(new HashMap<String,Object>(){{put("answer" , "JavaScript"); put("score" , 1);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "HTML"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "CSS"); put("score" , 1);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "XML"); put("score" , 0);}});
-            put("answers", answers);
-        }});
-    }} ;
-    List<Map<String, Object>> lstSecurity = new ArrayList<Map<String, Object>>() {{
-        add(new HashMap<String,Object>(){{
-            put("question" , "Que signifie l'acronyme \"VPN\" ?");
-            List<Map<String, Object>> answers = new ArrayList<>();
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Virtual Private Network"); put("score" , 1);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Très Personnel Notation"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Virtual Public Network"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Vaste Réseau Personnel"); put("score" , 0);}});
-            put("answers", answers);
-        }});
-        add(new HashMap<String,Object>(){{
-            put("question" , "Quelle est la méthode courante utilisée dans les attaques d'ingénierie sociale pour manipuler les individus et leur faire révéler des informations sensibles ?");
-            List<Map<String, Object>> answers = new ArrayList<>();
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Pare-feu"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Hameçonnage (Phishing)"); put("score" , 1);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Antivirus"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Chiffrement"); put("score" , 0);}});
-            put("answers", answers);
-        }});
-        add(new HashMap<String,Object>(){{
-            put("question" , "Laquelle des options suivantes décrit le mieux une attaque \"DDoS\" dans le contexte de la cybersécurité ?");
-            List<Map<String, Object>> answers = new ArrayList<>();
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Destruction de données et Surchargement de sécurité"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Stockage de données distribué"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Déni de service (Denial of Service)"); put("score" , 1);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Analyse approfondie des données"); put("score" , 0);}});
-            put("answers", answers);
-        }});
-    }} ;
-    List<Map<String, Object>> lstAI = new ArrayList<Map<String, Object>>() {{
-        add(new HashMap<String,Object>(){{
-            put("question" , "Quelle technique d'apprentissage automatique (machine learning) est utilisée pour regrouper des données non supervisées en groupes homogènes ?");
-            List<Map<String, Object>> answers = new ArrayList<>();
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Régression linéaire"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Classification"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Clustering"); put("score" , 1);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Réseau de neurones"); put("score" , 0);}});
-            put("answers", answers);
-        }});
-        add(new HashMap<String,Object>(){{
-            put("question" , "Quel est l'objectif principal de l'apprentissage profond (deep learning) en IA ?");
-            List<Map<String, Object>> answers = new ArrayList<>();
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Imiter le cerveau humain"); put("score" , 1);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Résoudre des équations mathématiques complexes"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Automatiser les tâches répétitives"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Prédire le futur avec précision"); put("score" , 0);}});
-            put("answers", answers);
-        }});
-        add(new HashMap<String,Object>(){{
-            put("question" , "Quelle étape de l'apprentissage automatique (machine learning) implique l'utilisation de données étiquetées pour entraîner un modèle à faire des prédictions ?");
-            List<Map<String, Object>> answers = new ArrayList<>();
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Prétraitement des données"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Entraînement du modèle"); put("score" , 1);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Évaluation du modèle"); put("score" , 0);}});
-            answers.add(new HashMap<String,Object>(){{put("answer" , "Interprétation des résultats"); put("score" , 0);}});
-            put("answers", answers);
-        }});
-    }} ;
 
-    List<List<Map<String, Object>>> lst =new  ArrayList<List<Map<String, Object>>>(){{
-        add(lstMobile);
-        add(lstWeb);
-        add(lstSecurity);
-        add(lstAI);
-    }};
+
+
+
 
     LinearLayout linearLayout;
 
@@ -144,22 +59,40 @@ public class QuizActivity extends AppCompatActivity {
 
     ListView myAnswers;
 
+    ProgressBar progressBar;
+    Timer timer;
+
+    TextView timerTextView;
+
     int index = 0;
 
     int score = 0;
 
-    int position;
+    private boolean isTimerRunning = false;
+    private long startTime;
+    private long remainingTime;
+
+    private final long timeLimit = 10000;
+
+    private Handler timerHandler = new Handler(Looper.getMainLooper());
+
     public void updateScreen(){
         index++;
-        if(index >= lst.get(position).size()){
+        if(index >= lstMobile.size()){
+            stopQuestionTimer();
             Intent i = new Intent(QuizActivity.this, ResultActivity.class);
-            i.putExtra("score", (int) score);
+            Bundle bundle = new Bundle();
+            bundle.putInt("score", score);
+            i.putExtras(bundle);
             startActivity(i);
 
         }
         else{
-            textQuestion.setText(lst.get(position).get(index).get("question").toString());
-            myAnswers.setAdapter(new MyAdapter((List<Map<String, Object>>)lst.get(position).get(index).get("answers"), QuizActivity.this, this));
+            textQuestion.setText(lstMobile.get(index).get("question").toString());
+            myAnswers.setAdapter(new MyAdapter((List<Map<String, Object>>)lstMobile.get(index).get("answers"), QuizActivity.this, this));
+            stopQuestionTimer();
+            timerTextView.setText(formatTime(timeLimit));
+            startQuestionTimer(timeLimit);
         }
 
     }
@@ -169,27 +102,104 @@ public class QuizActivity extends AppCompatActivity {
         Log.d("LOG", String.valueOf(score));
     }
 
+    private void startQuestionTimer(final long originalTimeLimitMillis) {
+        // Initialize the start time only if the timer is not running
+        if (!isTimerRunning) {
+            progressBar.setMax((int) 10000);
+            progressBar.setProgress(progressBar.getMax());
+            startTime = System.currentTimeMillis();
+            isTimerRunning = true;
+            remainingTime = originalTimeLimitMillis;
+        }
+
+        // Define the timer task
+        Runnable timerRunnable = new Runnable() {
+            @Override
+            public void run() {
+                final long timeLimitMillis = originalTimeLimitMillis;
+                long elapsedTime = System.currentTimeMillis() - startTime;
+                remainingTime = Math.max(timeLimitMillis - elapsedTime, 0);
+                //Log.d("index", String.valueOf(index));
+                //Log.d("Time",String.valueOf(remainingTime) );
+
+                if (remainingTime <= 0) {
+                    stopQuestionTimer();
+                    updateScore(0);
+                    updateScreen();
+                } else {
+                    progressBar.setProgress((int) remainingTime);
+                    timerTextView.setText(formatTime(remainingTime));
+
+                    // Post the task again after a short delay (e.g., 100 milliseconds)
+                    timerHandler.postDelayed(this, 10);
+                }
+            }
+        };
+
+        // Post the initial timer task
+        timerHandler.post(timerRunnable);
+    }
+
+    private void stopQuestionTimer() {
+        // Cancel the timer task and mark the timer as not running
+        timerHandler.removeCallbacksAndMessages(null);
+        isTimerRunning = false;
+    }
+
+    private String formatTime(long millis) {
+        int seconds = (int) (millis / 1000) % 60;
+        int milliseconds = (int) millis % 1000;
+
+        return String.format("%02d:%03d", seconds, milliseconds);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        stopQuestionTimer();
+    }
 
 
-
-        @Override
+    @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_quiz);
 
-            position =  getIntent().getIntExtra("Position", 0);
-
             linearLayout = findViewById(R.id.myLayout);
+
+            progressBar = findViewById(R.id.progressBar);
+
+            timerTextView = findViewById(R.id.timerTextView);
 
             textQuestion = (TextView) findViewById(R.id.textQuestion);
             myAnswers = (ListView) findViewById(R.id.answers);
 
-            textQuestion.setText(lst.get(position).get(index).get("question").toString());
+            textQuestion.setText(lstMobile.get(index).get("question").toString());
 
-            myAnswers.setAdapter(new MyAdapter((List<Map<String,Object>>)lst.get(position).get(index).get("answers"), QuizActivity.this, this));
+            myAnswers.setAdapter(new MyAdapter((List<Map<String, Object>>) lstMobile.get(index).get("answers"), QuizActivity.this, this));
 
+            timerTextView.setText(formatTime(10000));
 
+            startQuestionTimer(timeLimit);
 
         }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        stopQuestionTimer();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopQuestionTimer();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startQuestionTimer(remainingTime);
+    }
 }

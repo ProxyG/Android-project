@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.List;
 import java.util.Map;
 
@@ -33,9 +35,7 @@ public class MyAdapter2 extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
-        return categories.get(position);
-    }
+    public Object getItem(int position) {return categories.get(position);}
 
     @Override
     public long getItemId(int position) {
@@ -49,7 +49,19 @@ public class MyAdapter2 extends BaseAdapter {
         categorieButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.navigateToQuiz(position);
+                switch (position){
+                    case 0:
+                        mainActivity.navigateToQuiz();
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        mainActivity.signOutUser();
+                        break;
+                    case 3:
+                        break;
+                }
+
             }
         });
 

@@ -16,6 +16,7 @@
         android:layout_marginBottom="30dp"
         android:text="Bienvenue dans notre quiz, veuillez séléctionner une catégorie"
         android:textAlignment="center"
+        android:visibility="gone"
         android:textSize="20sp" />
 
     <GridView
@@ -26,7 +27,16 @@
         android:verticalSpacing="8dp"
         android:horizontalSpacing="8dp"
         android:stretchMode="columnWidth"
+        android:visibility="gone"
         android:gravity="center"/>
+
+    <ProgressBar
+        android:id="@+id/circularProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="300dp" />
 
 
 </LinearLayout>
